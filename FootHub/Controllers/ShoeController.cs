@@ -46,6 +46,7 @@ namespace FootHub.Controllers
                 Brand = addShoeDto.Brand,
                 ShoeName = addShoeDto.ShoeName,
                 ShoePrice = addShoeDto.ShoePrice,
+                Gender = addShoeDto.Gender,
                 ShoeSize = addShoeDto.ShoeSize,
                 ShoeColour = addShoeDto.ShoeColour,
                 ImagePath = addShoeDto.ImagePath
@@ -67,6 +68,7 @@ namespace FootHub.Controllers
             shoeToUpdate.Brand = updateShoeDto.Brand;
             shoeToUpdate.ShoeName = updateShoeDto.ShoeName;
             shoeToUpdate.ShoePrice = updateShoeDto.ShoePrice;
+            shoeToUpdate.Gender = updateShoeDto.Gender;
             shoeToUpdate.ShoeSize = updateShoeDto.ShoeSize;
             shoeToUpdate.ShoeColour = updateShoeDto.ShoeColour;
             shoeToUpdate.ImagePath = updateShoeDto.ImagePath;
@@ -87,6 +89,23 @@ namespace FootHub.Controllers
             dbContext.SaveChanges();
             return Ok();
         }
+        [HttpPost]
+        [Route("{string:gender}")]
+        public IActionResult GetShoeBySex(string gender) 
+        {
+            List<Shoe> shoesByGender = new List<Shoe>();
+            var allShoes = dbContext.Shoes.ToList() ;
+            foreach (var shoe in allShoes)
+            {
+                if (shoe.Gender == gender)
+                {
+                    shoesByGender.Add(shoe);
+                }
+            }
+            return Ok(shoesByGender);
+        
+        }
+
 
     }
 

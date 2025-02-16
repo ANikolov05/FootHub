@@ -10,6 +10,8 @@
 
         public string ShoePrice { get; set; }
 
+        public string Gender { get; set; }
+
         public int ShoeSize { get; set; }
 
         public string ShoeColour { get; set; }
