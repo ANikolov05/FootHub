@@ -91,7 +91,7 @@ namespace FootHub.Controllers
         }
         [HttpPost]
         [Route("{string:gender}")]
-        public IActionResult GetShoeBySex(string gender) 
+        public IActionResult GetShoeByGender(string gender) 
         {
             List<Shoe> shoesByGender = new List<Shoe>();
             var allShoes = dbContext.Shoes.ToList() ;
