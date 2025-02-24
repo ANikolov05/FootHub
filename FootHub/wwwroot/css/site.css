@@ -5,7 +5,9 @@
 .nav-link {
     font-size: larger;
 }
-
+.navbar navbar-expand-lg bg-body-tertiary {
+    color:orange;
+}
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
@@ -13,6 +15,9 @@ body {
     padding: 0;
     background: #f8f8f8;
     text-align: center;
+}
+.container{
+    width:100%;
 }
 
 .h2-heading {
