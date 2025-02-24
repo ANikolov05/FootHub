@@ -1,8 +1,72 @@
-﻿@{
+﻿
+@using FootHub.Models.ViewModels;
+@model FootHub.Models.ViewModels.HomePageViewModel;
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FootHub.styles.css" asp-append-version="true" />
+</head>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Walk with Confidence</h1>
+        <p>Топ марки на атрактивни цени</p>
+        <a href="catalog/catalog.html" class="btn">Разгледай</a>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="products">
+    <h2 class="h2-heading">Най-продавани</h2>
+    <div class="product-grid">
+        <div class="product">
+            <img src="images/shoe1.jpg" alt="Shoe 1">
+            <h3>Replay</h3>
+            <p>299,00 BGN</p>
+        </div>
+        <div class="product">
+            <img src="images/shoe2.jpg" alt="Shoe 2">
+            <h3>Karl Lagerfeld</h3>
+            <p>319,00 BGN</p>
+        </div>
+        <div class="product">
+            <img src="images/shoe4.jpg" alt="Shoe 3">
+            <h3>Nike</h3>
+            <p>324,00 BGN</p>
+        </div>
+    </div>
+</section>
+
+<footer style="background-color: #000000; color: #FFFFFF; padding: 40px 0; text-align: center;">
+    <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+
+        <div style="flex: 1; text-align: left; padding: 10px;">
+            <h2 style="color: #FF6600; font-size: 45px;">Foot HUB</h2>
+            <p style="padding-left: 7%;">Walk with Confidence</p>
+        </div>
+
+        <div style="flex: 2; display: flex; justify-content: center; gap: 30px; padding: 10px;">
+            <a href="#" style="color: #ffffff; text-decoration: none; font-weight: bold;">Начало</a>
+            <a href="#" style="color: #FFFFFF; text-decoration: none; font-weight: bold;">Каталог</a>
+            <a href="#" style="color: #FFFFFF; text-decoration: none; font-weight: bold;">За Нас</a>
+            <a href="#" style="color: #FFFFFF; text-decoration: none; font-weight: bold;">Контакти</a>
+        </div>
+
+        <div style="flex: 1; text-align: right; padding: 10px;">
+            <a href="#" style="margin: 0 10px;"><img src="images/facebook.png" alt="Facebook" width="24"></a>
+            <a href="#" style="margin: 0 10px;"><img src="images/insta.png" alt="Instagram" width="24"></a>
+            <a href="#" style="margin: 0 10px;"><img src="images/twit.png" alt="Twitter" width="24"></a>
+        </div>
+
+    </div>
+
+    <hr style="border: 1px solid #FF6600; margin: 20px 0;">
+
+    <p>&copy; 2025 Foot HUB. All Rights Reserved.</p>
+</footer>
+
