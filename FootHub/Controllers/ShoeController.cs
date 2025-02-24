@@ -23,7 +23,7 @@ namespace FootHub.Controllers
         }
 
         [HttpPost]
-        [Route("{ShoeName:string}")]
+        [Route("{ShoeName}")]
         public IActionResult GetShoeByName(string ShoeName)
         {
             var shoeToFind = dbContext.Shoes.Find(ShoeName);
@@ -90,7 +90,7 @@ namespace FootHub.Controllers
             return Ok();
         }
         [HttpPost]
-        [Route("{string:gender}")]
+        [Route("{gender}")]
         public IActionResult GetShoeByGender(string gender) 
         {
             List<Shoe> shoesByGender = new List<Shoe>();

@@ -1,22 +1,130 @@
-html {
-  font-size: 14px;
+.logo {
+    width: 50px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.nav-link {
+    font-size: larger;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+/* General Styles */
 body {
-  margin-bottom: 60px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f8f8f8;
+    text-align: center;
 }
+
+.h2-heading {
+    text-shadow: 2px 2px 2px rgb(203, 202, 202);
+}
+
+/* Hero Section */
+.hero {
+    background: url('../images/main_page3.png') center/cover no-repeat;
+    color: white;
+    padding: 100px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+.hero-content {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid rgb(255, 98, 0);
+    box-shadow: 0 10px 20px white;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    color: white;
+    background: rgb(255, 98, 0);
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: all 0.3s;
+}
+
+    .btn:hover {
+        background-color: #e03e00;
+    }
+
+/* Featured Products */
+.products {
+    padding: 50px 20px;
+    background: white;
+}
+
+    .products h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+.product-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 20%;
+    text-align: center;
+    margin-left: 5%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .product:hover {
+        transform: scale(1.1,1.1);
+        box-shadow: 0 10px 20px rgb(0, 0, 0, 0.2);
+    }
+
+    .product img {
+        max-width: 100%;
+        border-radius: 5px;
+    }
+
+    .product h3 {
+        margin: 10px 0;
+        font-size: 20px;
+    }
+
+    .product p {
+        font-size: 18px;
+        color: rgb(255, 98, 0);
+        font-weight: bold;
+    }
+
+/* Call to Action */
+.cta {
+    background: #333;
+    color: white;
+    padding: 50px 20px;
+}
+
+    .cta h2 {
+        font-size: 28px;
+    }
+
+    .cta p {
+        font-size: 18px;
+    }
