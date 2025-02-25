@@ -17,6 +17,8 @@
         public string ShoeColour { get; set; }
 
         public string ImagePath { get; set; }
-        
+
+        public ICollection<ShoppingCart> ShoppingCarts { get; set; }
+
     }
 }

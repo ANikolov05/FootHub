@@ -103,9 +103,9 @@ namespace FootHub.Controllers
                 }
             }
             return Ok(shoesByGender);
-        
+ 
         }
-
+        
 
     }
 

@@ -16,7 +16,7 @@ namespace FootHub.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.1")
+                .HasAnnotation("ProductVersion", "9.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -61,6 +61,27 @@ namespace FootHub.Migrations
                     b.ToTable("Shoes");
                 });
 
+            modelBuilder.Entity("FootHub.Models.Entitites.ShoppingCart", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ShoeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "ShoeId");
+
+                    b.HasIndex("ShoeId");
+
+                    b.ToTable("ShoppingCarts");
+                });
+
             modelBuilder.Entity("FootHub.Models.Entitites.User", b =>
                 {
                     b.Property<int>("Id")
@@ -84,6 +105,35 @@ namespace FootHub.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("FootHub.Models.Entitites.ShoppingCart", b =>
+                {
+                    b.HasOne("FootHub.Models.Entitites.Shoe", "Shoe")
+                        .WithMany("ShoppingCarts")
+                        .HasForeignKey("ShoeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FootHub.Models.Entitites.User", "User")
+                        .WithMany("ShoppingCarts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Shoe");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("FootHub.Models.Entitites.Shoe", b =>
+                {
+                    b.Navigation("ShoppingCarts");
+                });
+
+            modelBuilder.Entity("FootHub.Models.Entitites.User", b =>
+                {
+                    b.Navigation("ShoppingCarts");
                 });
 #pragma warning restore 612, 618
         }

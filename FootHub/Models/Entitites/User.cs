@@ -12,5 +12,7 @@ namespace FootHub.Models.Entitites
 
         public string Role { get; set; }
 
+        public ICollection<ShoppingCart> ShoppingCarts { get; set; }
+
     }
 }
