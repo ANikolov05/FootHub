@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using FootHub.Models.Entitites;
+using FootHub.Models.Entities;
 namespace FootHub.Models.DataBase;
 public class FootHubDBContext : DbContext
 {
     public DbSet<Shoe> Shoes { get; set; }
     public DbSet<User> Users { get; set; }
-
+    public DbSet<Card> Cards { get; set; }
     public DbSet<ShoppingCart> ShoppingCarts { get; set; }
 
 
@@ -31,8 +32,16 @@ public class FootHubDBContext : DbContext
                     .WithMany(s => s.ShoppingCarts)
                     .HasForeignKey(sc => sc.ShoeId)
                     .OnDelete(DeleteBehavior.Cascade);
-    }
 
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Card>()
+            .HasOne(c => c.User)
+            .WithMany(u => u.Cards)
+            .HasForeignKey(c => c.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+    }
+  
 }
     
 

@@ -8,7 +8,7 @@
 
         public string ShoeName { get; set; }
 
-        public string ShoePrice { get; set; }
+        public decimal ShoePrice { get; set; }
 
         public string Gender { get; set; }
 

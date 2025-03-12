@@ -8,6 +8,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using System.Data;
+using BCrypt.Net;
 
 namespace FootHub.Controllers
 {
@@ -24,11 +25,13 @@ namespace FootHub.Controllers
         [HttpPost]
         public IActionResult CreateUser(CreateUserDto userdto)
         {
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(userdto.Password);
             var user = new User
             {
                 Id = userdto.Id,
+                Name = userdto.Name,
                 Email = userdto.Email,
-                Password = userdto.Password,
+                Password = hashedPassword,
                 Role = userdto.Role
             };
 
@@ -48,14 +51,39 @@ namespace FootHub.Controllers
             else
             {
                 userToUpdate.Id = updateUserDto.Id;
+                userToUpdate.Name = updateUserDto.Name;
                 userToUpdate.Email = updateUserDto.Email;
                 userToUpdate.Password = updateUserDto.Password;
-                dbContext.Users.Update(userToUpdate);
-                dbContext.SaveChanges();
+                userToUpdate.Role = updateUserDto.Role;
             }
+            dbContext.Users.Update(userToUpdate);
+            dbContext.SaveChanges();
 
             return Ok();
         }
+        public bool CheckIfUserExists (int id)
+        {
+            var entry = dbContext.Users.Find(id);
+            if (entry == null)
+                return false;
+            else
+                return true;
+        }
+        [HttpGet]
+        public IActionResult CheckRole(User user)
+        {
+            var entry = dbContext.Users
+                .Find(user.Id);
+
+            if (entry == null)
+                return NotFound();
+            else
+            {
+                return RedirectToAction("Admin");
+            }
+        }
+        
+        
 
     }
 }

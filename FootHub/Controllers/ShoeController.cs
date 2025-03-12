@@ -27,12 +27,12 @@ namespace FootHub.Controllers
         public IActionResult GetShoeByName(string ShoeName)
         {
             var shoeToFind = dbContext.Shoes.Find(ShoeName);
-            if (shoeToFind == null) 
+            if (shoeToFind == null)
             {
                 return NotFound();
             }
-            else 
-            { 
+            else
+            {
                 return Ok(shoeToFind);
             }
         }
@@ -41,7 +41,7 @@ namespace FootHub.Controllers
         {
             var shoeentity = new Shoe()
             {
-                
+
 
                 Brand = addShoeDto.Brand,
                 ShoeName = addShoeDto.ShoeName,
@@ -75,7 +75,7 @@ namespace FootHub.Controllers
 
             dbContext.SaveChanges();
             return Ok(shoeToUpdate);
-            
+
         }
         [HttpDelete]
         public IActionResult DeleteShoe(int id)
@@ -84,17 +84,17 @@ namespace FootHub.Controllers
             {
                 return NotFound();
             }
-           var shoeToDelete = dbContext.Shoes.Find(id);
+            var shoeToDelete = dbContext.Shoes.Find(id);
             dbContext.Remove(shoeToDelete);
             dbContext.SaveChanges();
             return Ok();
         }
         [HttpPost]
         [Route("{gender}")]
-        public IActionResult GetShoeByGender(string gender) 
+        public IActionResult GetShoeByGender(string gender)
         {
             List<Shoe> shoesByGender = new List<Shoe>();
-            var allShoes = dbContext.Shoes.ToList() ;
+            var allShoes = dbContext.Shoes.ToList();
             foreach (var shoe in allShoes)
             {
                 if (shoe.Gender == gender)
@@ -103,10 +103,8 @@ namespace FootHub.Controllers
                 }
             }
             return Ok(shoesByGender);
- 
-        }
-        
 
+        }
     }
 
 }

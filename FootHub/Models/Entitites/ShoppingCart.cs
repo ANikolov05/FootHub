@@ -8,5 +8,7 @@
         public int ShoeId { get; set; }
         public Shoe Shoe { get; set; }
         public int Quantity { get; set; }
+
+
     }
 }
